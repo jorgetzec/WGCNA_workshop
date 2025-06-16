@@ -1,4 +1,3 @@
-
 # WGCNA: From Gene Expression to Functional Co-expression Networks
 
 ### Introduction to Network Biology
@@ -40,9 +39,9 @@ Example:
     - **Computation**: Pairwise correlations between genes are calculated to measure co-expression. **Pearson correlation** is commonly used.
     - **Formula**:  
         $$  
-        r_{ij} = \frac{\text{cov}(X_i, X_j)}{\sigma_{X_i} \sigma_{X_j}}  
+        r_{ij} = \frac{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)(x_{jk} - \bar{x}_j)}{\sqrt{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)^2} \sqrt{\sum_{k=1}^{n} (x_{jk} - \bar{x}_j)^2}}  
         $$  
-        where $X_i$, $X_j$ are expression profiles of genes $i$, $j$; $\text{cov}$ is covariance; $\sigma_{X_i}$, $\sigma_{X_j}$ are standard deviations.
+        where $x_{ik}$ is the expression of gene $i$ in condition $k$, $\bar{x}_i$ is the mean expression of gene $i$, and $n$ is the number of conditions.
     - **Output**: A symmetric $n \times n$ matrix $R = [r_{ij}]$, where $r_{ij} \in [-1, 1]$.
     
     Example of a correlation matrix (*R*)![[matrixCor_heatmap.png]]
@@ -51,9 +50,12 @@ Example:
     - **Transformation**: Correlations are transformed into **weighted connections** using a **power function ($\beta$)**. This is known as **soft-thresholding**, which highlights strong connections and reduces the impact of weak correlations.
     - **Formula**:  
         $$  
-        a_{ij} = \left| \text{cor}(X_i, X_j) \right|^\beta  
+        a_{ij} = \begin{cases} 
+        1 & \text{if } |r_{ij}| \geq \theta \\
+        0 & \text{if } |r_{ij}| < \theta
+        \end{cases}  
         $$  
-        where $\beta$ is chosen to achieve **scale-free topology**.
+        where $\theta$ is chosen to achieve **scale-free topology**.
     - **Output**: A symmetric $n \times n$ matrix $A = [a_{ij}]$, where $a_{ij} \in [0, 1]$.
     
      Exemplification of a adjiacency matrix (*A*) calculation.
@@ -120,8 +122,8 @@ Key concepts for assessing gene importance within modules and their relation to 
         (**within-module, vs. total $k_i = \sum_j a_{ij}$**)
         
         Example of a network with hub genes identified:
-		![[hub_genes.png]]
-
+		![hub genes network](Figures/hub_genes.png)
+        
 ### Biological Interpretation
 
 Once modules and hub genes are identified, further biological insights can be gained through:
