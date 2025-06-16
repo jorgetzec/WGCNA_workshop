@@ -78,8 +78,9 @@ Example:
     - **Transformation for Clustering**: The $TOM$ matrix is converted into a dissimilarity measure for easier clustering.
     - **Formula**:  
 
+        $$
         \text{dissTOM}_{ij} = 1 - TOM_{ij}
-
+        $$
     - **Output**: A symmetric $n \times n$ matrix $\mathrm{dissTOM} = [dissTOM_{ij}]$, where $dissTOM_{ij} \in [0, 1]$.
 
 6. **Clustering Modules**
