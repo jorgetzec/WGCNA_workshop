@@ -17,7 +17,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
 1. **Expression Matrix ($X$) Preprocessing**
     
     - **Input**: A matrix of gene expression values (e.g., RNA-seq counts).
-    - **Preprocessing**: Normalization (e.g., VST, Rlog, CPM, TMM, or $\log_2(\text{TPM}+1)$) and filtering of low-variance genes.
+    - **Preprocessing**: Normalization (e.g., VST, Rlog, CPM, TMM, or $\log_2(\mathrm{TPM}+1)$) and filtering of low-variance genes.
     - **Output**: A cleaned matrix $X$ where $X_{i,s}$ (expression of gene $i$ in samples $s$).
     - **Formula**:  
         $X = [X_{i,s}], \quad i = 1, \dots, n, \quad s = 1, \dots, m$
@@ -78,9 +78,11 @@ Example:
     - **Transformation for Clustering**: The $TOM$ matrix is converted into a dissimilarity measure for easier clustering.
     - **Formula**:  
 
-        $\text{dissTOM}_{ij} = 1 - TOM_{ij}$
+        $$
+        \text{dissTOM}_{ij} = 1 - TOM_{ij}
+        $$
 
-    - **Output**: A symmetric $n \times n$ matrix $\text{dissTOM} = [\text{dissTOM}_{ij}]$, where $\text{dissTOM}_{ij} \in [0, 1]$.
+    - **Output**: A symmetric $n \times n$ matrix $\mathrm{dissTOM} = [dissTOM_{ij}]$, where $dissTOM_{ij} \in [0, 1]$.
 
 6. **Clustering Modules**
     
@@ -119,10 +121,9 @@ Key concepts for assessing gene importance within modules and their relation to 
     - Genes with **high $GS$ and high $MM$** in a trait-correlated module are considered key candidates for biological roles.
 - **Hub Genes**: These are genes that are **highly connected within a module**. They are identified by selecting genes with high $MM$ (e.g., top 10%) or high **intramodule connectivity**. Hub genes are often functionally important, such as transcription factors in biological pathways.
     - **Intramodule Connectivity Formula**:  
-    
-        $$
-        k_{\text{within},i} = \sum_{\substack{j \in \text{module} \\ j \neq i}} a_{ij}
-        $$
+
+        $k_{\text{within},i} = \sum_{\substack{j \in \text{module} \\ j \neq i}} a_{ij}$
+
 
         (**within-module, vs. total $k_i = \sum_j a_{ij}$**)
         
