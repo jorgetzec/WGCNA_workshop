@@ -20,10 +20,11 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Preprocessing**: Normalization (e.g., VST, Rlog, CPM, TMM, or $\log_2(\text{TPM}+1)$) and filtering of low-variance genes.
     - **Output**: A cleaned matrix $X$ where $X_{i,s}$ (expression of gene $i$ in samples $s$).
     - **Formula**:  
-        $$  
-        X = [X_{i,s}], \quad i=1,\dots,n, \quad s=1,\dots,m  
-        $$  
+        ```math
+        X = [X_{i,s}], \quad i=1,\dots,n, \quad s=1,\dots,m
+        ```
         where $n$ is the number of genes, $m$ is the number of samples.
+
 Example: 
 
 | Gene   | Sample 1 | Sample 2 | Sample 3 | Sample 4 | Sample 5 |
@@ -38,91 +39,96 @@ Example:
     
     - **Computation**: Pairwise correlations between genes are calculated to measure co-expression. **Pearson correlation** is commonly used.
     - **Formula**:  
-        $$  
-        r_{ij} = \frac{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)(x_{jk} - \bar{x}_j)}{\sqrt{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)^2} \sqrt{\sum_{k=1}^{n} (x_{jk} - \bar{x}_j)^2}}  
-        $$  
+        ```math
+        r_{ij} = \frac{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)(x_{jk} - \bar{x}_j)}{\sqrt{\sum_{k=1}^{n} (x_{ik} - \bar{x}_i)^2} \sqrt{\sum_{k=1}^{n} (x_{jk} - \bar{x}_j)^2}}
+        ```
         where $x_{ik}$ is the expression of gene $i$ in condition $k$, $\bar{x}_i$ is the mean expression of gene $i$, and $n$ is the number of conditions.
     - **Output**: A symmetric $n \times n$ matrix $R = [r_{ij}]$, where $r_{ij} \in [-1, 1]$.
     
-    Example of a correlation matrix (*R*)![[matrixCor_heatmap.png]]
+    Example of a correlation matrix (*R*):
+    ![Matriz de Correlación](Figures/matrixCor_heatmap.png)
+
 3. **Adjacency Matrix ($A$)**
     
     - **Transformation**: Correlations are transformed into **weighted connections** using a **power function ($\beta$)**. This is known as **soft-thresholding**, which highlights strong connections and reduces the impact of weak correlations.
     - **Formula**:  
-        $$  
+        ```math
         a_{ij} = \begin{cases} 
         1 & \text{if } |r_{ij}| \geq \theta \\
         0 & \text{if } |r_{ij}| < \theta
-        \end{cases}  
-        $$  
+        \end{cases}
+        ```
         where $\theta$ is chosen to achieve **scale-free topology**.
     - **Output**: A symmetric $n \times n$ matrix $A = [a_{ij}]$, where $a_{ij} \in [0, 1]$.
     
-     Exemplification of a adjiacency matrix (*A*) calculation.
-     ![[matrixAdj_hetmap.png]]
+    Exemplification of a adjacency matrix (*A*) calculation:
+    ![Matriz de Adyacencia](Figures/matrixAdj_hetmap.png)
+
 4. **Topological Overlap Matrix (TOM)**
     
     - **Measure of Similarity**: TOM measures the **topological similarity** between genes, considering not only direct connections but also the **number of shared neighbors**. This helps in **reducing noise** from spurious correlations.
     - **Formula**:  
-        $$  
-        TOM_{ij} = \frac{\sum_{u \neq i,j} a_{iu}a_{uj} + a_{ij}}{\min(k_i, k_j) + 1 - a_{ij}}  
-        $$  
+        ```math
+        TOM_{ij} = \frac{\sum_{u \neq i,j} a_{iu}a_{uj} + a_{ij}}{\min(k_i, k_j) + 1 - a_{ij}}
+        ```
         where $\sum_{u \neq i,j} a_{iu}a_{uj}$ represents shared neighbors; $k_i = \sum_u a_{iu}$ is connectivity of gene $i$.
     - **Output**: A symmetric $n \times n$ matrix $TOM = [TOM_{ij}]$, where $TOM_{ij} \in [0, 1]$.
     
-    Exemplification of a Network with Topological Overlap Matrix (TOM) simulation of i-j connections
-    ![[TOM_simulation 1.png]]
+    Exemplification of a Network with Topological Overlap Matrix (TOM) simulation of i-j connections:
+    ![Simulación TOM](Figures/TOM_simulation.png)
+
 5. **Dissimilarity TOM (dissTOM)**
     
     - **Transformation for Clustering**: The $TOM$ matrix is converted into a dissimilarity measure for easier clustering.
     - **Formula**:  
-        $$  
-        \text{dissTOM}_{ij} = 1 - TOM_{ij}  
-        $$
+        ```math
+        \text{dissTOM}_{ij} = 1 - TOM_{ij}
+        ```
     - **Output**: A symmetric $n \times n$ matrix $\text{dissTOM} = [\text{dissTOM}_{ij}]$, where $\text{dissTOM}_{ij} \in [0, 1]$.
+
 6. **Clustering Modules**
     
     - **Hierarchical Clustering**: $\text{dissTOM}$ is used as a distance measure for hierarchical clustering, constructing a dendrogram.
     - **Dynamic Tree Cutting**: This method identifies **modules** (groups of genes with low $\text{dissTOM}$) based on parameters like $\text{minModuleSize}$ and $\text{deepSplit}$. Genes with low $\text{dissTOM}$ (high $TOM$) are clustered together.
     - **Eigengene Calculation**: For each module, a **module eigengene (ME)** is calculated. The $ME$ is the **first principal component (PC1)** of the expression profiles of all genes within that module. It **summarizes the module's overall expression pattern** in a single vector, capturing the dominant trend of gene expression.
     - **Formula**:  
-        $$  
-        ME = \sum_{i \in \text{module}} w_i X_i  
-        $$  
+        ```math
+        ME = \sum_{i \in \text{module}} w_i X_i
+        ```
         where $w_i$ are PCA loadings, $X_i$ are standardized expressions.
     - **Module Merging**: Modules can be merged if their eigengenes are highly correlated (e.g., $>0.75$, **corresponding to $\text{mergeCutHeight}=0.25$**).
     
-	Exemplification of module formation.
-    ![[modules_dendro_merged.png]]
+    Exemplification of module formation:
+    ![Formación y Fusión de Módulos](Figures/modules_dendro_merged.png)
 
 ### Module Analysis and Trait Correlation
 
 After module detection, WGCNA allows for the **correlation of module eigengenes with external biological traits** (e.g., disease status, treatment) to identify biologically relevant modules. Modules highly correlated with a trait are likely involved in that trait's biology.
 
-![[Trait-moduleCor.png]]
+![Correlación Módulo-Fenotipo](Figures/Trait-moduleCor.png)
 
 Key concepts for assessing gene importance within modules and their relation to traits are:
 
 - **Gene Significance ($GS$)**: Measures how strongly a gene's expression correlates with a specific trait.
     - **Formula**:  
-        $$  
-        GS_i = \left| \text{cor}(X_i, \text{trait}) \right|  
-        $$
+        ```math
+        GS_i = \left| \text{cor}(X_i, \text{trait}) \right|
+        ```
 - **Module Membership ($MM$)**: Quantifies how central a gene is to its module by measuring the correlation between a gene's expression and its module's eigengene.
     - **Formula**:  
-        $$  
-        MM_i = \left| \text{cor}(X_i, ME_{\text{module}}) \right|  
-        $$
+        ```math
+        MM_i = \left| \text{cor}(X_i, ME_{\text{module}}) \right|
+        ```
     - Genes with **high $GS$ and high $MM$** in a trait-correlated module are considered key candidates for biological roles.
 - **Hub Genes**: These are genes that are **highly connected within a module**. They are identified by selecting genes with high $MM$ (e.g., top 10%) or high **intramodule connectivity**. Hub genes are often functionally important, such as transcription factors in biological pathways.
     - **Intramodule Connectivity Formula**:  
-        $$  
-        k_{\text{within},i} = \sum_{j \in \text{module}, j \neq i} a_{ij}  
-        $$  
+        ```math
+        k_{\text{within},i} = \sum_{j \in \text{module}, j \neq i} a_{ij}
+        ```
         (**within-module, vs. total $k_i = \sum_j a_{ij}$**)
         
         Example of a network with hub genes identified:
-		![hub genes network](Figures/hub_genes.png)
+        ![Genes Hub](Figures/hub_genes.png)
         
 ### Biological Interpretation
 
