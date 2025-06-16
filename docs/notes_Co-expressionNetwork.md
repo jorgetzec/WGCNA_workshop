@@ -24,15 +24,22 @@ The WGCNA workflow transforms expression data into networks through a series of 
 
         where $n$ is the number of genes, $m$ is the number of samples.
 
-Example: 
 
-| Gene   | Sample 1 | Sample 2 | Sample 3 | Sample 4 | Sample 5 |
-| ------ | -------- | -------- | -------- | -------- | -------- |
-| Gene A | 3.745401 | 9.507143 | 7.319939 | 5.986585 | 1.560186 |
-| Gene B | 1.559945 | 0.580836 | 8.661761 | 6.011150 | 7.080726 |
-| Gene C | 0.205845 | 9.699099 | 8.324426 | 2.123391 | 1.818250 |
-| Gene D | 1.834045 | 3.042422 | 5.247564 | 4.319450 | 2.912291 |
-| Gene E | 6.118529 | 1.394939 | 2.921446 | 3.663618 | 4.560700 |
+        | **Raw Count Matrix** | S1  | S2  | S3  | S4  | S5  |
+        | -------------------- | --- | --- | --- | --- | --- |
+        | Gene A               | 0   | 3   | 1   | 1   | 0   |
+        | Gene B               | 0   | 0   | 2   | 1   | 1   |
+        | Gene C               | 0   | 4   | 2   | 0   | 0   |
+        | Gene D               | 0   | 0   | 1   | 1   | 0   |
+        | Gene E               | 1   | 0   | 0   | 0   | 1   |
+
+        | **Normalized Expression Matrix** | S1  | S2  | S3  | S4  | S5  |
+        | -------------------------------- | --- | --- | --- | --- | --- |
+        | Gene A                           | 4.7 | 5.3 | 6.3 | 5.2 | 5.1 |
+        | Gene B                           | 4.7 | 4.7 | 5.5 | 5.1 | 4.7 |
+        | Gene C                           | 4.5 | 4.9 | 4.7 | 5.0 | 4.9 |
+        | Gene D                           | 5.2 | 4.4 | 5.5 | 6.4 | 5.6 |
+
 
 2. **Correlation Matrix ($R$)**
     
@@ -79,7 +86,7 @@ Example:
     - **Formula**:  
 
         $dissTOM_{ij} = 1 - TOM_{ij}$
-        
+
     - **Output**: A symmetric $n \times n$ matrix $\mathrm{dissTOM} = [dissTOM_{ij}]$, where $dissTOM_{ij} \in [0, 1]$.
 
 6. **Clustering Modules**
