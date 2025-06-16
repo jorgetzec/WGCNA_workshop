@@ -133,9 +133,6 @@ Key concepts for assessing gene importance within modules and their relation to 
 
         $k_{\text{within},i} = \sum_{\substack{j \in \text{module} \\ j \neq i}} a_{ij}$
 
-        $k_{\text{within},i} = \sum_{j \in \text{module}, j \neq i} a_{ij}$
-
-
         (**within-module, vs. total $k_i = \sum_j a_{ij}$**)
         
         Example of a network with hub genes identified:
