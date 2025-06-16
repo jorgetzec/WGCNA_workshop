@@ -1,0 +1,7 @@
+.Rhistory
+*.csv
+*.xlsx
+*.py
+*.pdf
+*.pptx
+*.png
