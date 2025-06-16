@@ -17,7 +17,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
 1. **Expression Matrix ($X$) Preprocessing**
     
     - **Input**: A matrix of gene expression values (e.g., RNA-seq counts).
-    - **Preprocessing**: Normalization (e.g., VST, Rlog, CPM, TMM, or $\log_2(\mathrm{TPM}+1)$) and filtering of low-variance genes.
+    - **Preprocessing**: Normalization (e.g., VST, Rlog, CPM, TMM, or $\log_2(TPM+1)$) and filtering of low-variance genes.
     - **Output**: A cleaned matrix $X$ where $X_{i,s}$ (expression of gene $i$ in samples $s$).
     - **Formula**:  
         $X = [X_{i,s}], \quad i = 1, \dots, n, \quad s = 1, \dots, m$
