@@ -36,7 +36,6 @@
     4.4. Tools Similar to or Based on WGCNA  
     4.5. WGCNA vs. Gene Regulatory Networks  
 
-
 ### **Session 3: Practical WGCNA Analysis - Part I (2 hours)**
 
 5. Data Preparation and Preprocessing
