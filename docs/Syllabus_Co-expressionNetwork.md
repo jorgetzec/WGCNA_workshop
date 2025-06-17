@@ -20,7 +20,7 @@
 
 ### **Session 2: WGCNA Application, Analysis, and Tools (2 hours)**
 
-3. Detailed Construction and Analysis of the WGCNA Network  
+3. Detailed Construction and Analysis of the WGCNA Network
     3.1. Step-by-Step Network Construction: Part II  
       3.1.1. Topological Overlap Matrix (TOM)  
       3.1.2. Dissimilarity Matrix (dissTOM)  
@@ -54,7 +54,6 @@
         6.2.2. Scale-Free Topology Assessment
     6.3. Network Construction
     6.4. Module Detection
-
 
 ### **Session 4: Practical WGCNA Analysis - Part II (2 hours)**
 
