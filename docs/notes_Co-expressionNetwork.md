@@ -27,7 +27,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
 
         Simulation of expression matriz preprocessing:
 
-        <img src="Figures/expression_preprocessing.png" width="70%" alt="Matriz de Correlación">
+        <img src="Figures/expression_preprocessing.png" width="70%" alt="Expression matriz preprocessing">
 
 2. **Correlation Matrix ($R$)**
     
@@ -66,7 +66,8 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Output**: A symmetric $n \times n$ matrix $TOM = [TOM_{ij}]$, where $TOM_{ij} \in [0, 1]$.
     
     Exemplification of a Network with Topological Overlap Matrix (TOM) simulation of i-j connections:
-    ![Simulación TOM](Figures/TOM_simulation.png)
+
+    <img src="Figures/TOM_simulation.png" width="70%" alt="TOM simulation">
 
 5. **Dissimilarity TOM (dissTOM)**
     
