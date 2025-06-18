@@ -40,6 +40,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Output**: A symmetric $n \times n$ matrix $R = [r_{ij}]$, where $r_{ij} \in [-1, 1]$.
     
     Example of a correlation matrix (*R*):
+
     <img src="Figures/matrixCor_heatmap.png" width="40%" alt="Matriz de Correlación">
 
 3. **Adjacency Matrix ($A$)**
@@ -53,6 +54,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Output**: A symmetric $n \times n$ matrix $A = [a_{ij}]$, where $a_{ij} \in [0, 1]$.
     
     Exemplification of a adjacency matrix (*A*) calculation:
+    
     ![Matriz de Adyacencia](Figures/matrixAdj_hetmap.png)
 
 4. **Topological Overlap Matrix (TOM)**
