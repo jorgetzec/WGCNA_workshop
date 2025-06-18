@@ -56,7 +56,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Output**: A symmetric $n \times n$ matrix $R = [r_{ij}]$, where $r_{ij} \in [-1, 1]$.
     
     Example of a correlation matrix (*R*):
-    ![Matriz de Correlación](Figures/matrixCor_heatmap.png){width=50%}
+    <img src="Figures/matrixCor_heatmap.png" width="50%" alt="Matriz de Correlación">
 
 3. **Adjacency Matrix ($A$)**
     
