@@ -17,11 +17,12 @@ The workshop is based on a subset of the *Chlamydomonas reinhardtii* transcripto
   - [coldata.csv](data/coldata.csv): Sample metadata.
 
 - [docs/](docs)  
-  Contains course notes, slides, syllabus, and a list of useful tools.
+  Contains course notes, slides, syllabus, a list of useful tools, and report instructions.
   - [notes_Co-expressionNetwork.md](docs/notes_Co-expressionNetwork.md): Workshop notes.
   - [Syllabus_Co-expressionNetwork.md](docs/Syllabus_Co-expressionNetwork.md): Workshop syllabus.
   - [ToolLists_Co-expressionNetwork.md](docs/ToolLists_Co-expressionNetwork.md): List of tools and resources.
   - [Co-expressionNetwork_WorkshopContent.pdf](docs/Co-expressionNetwork_WorkshopContent.pdf): Workshop slides.
+  - [WGCNA_workshop_report_instructions.md](docs/WGCNA_workshop_report_instructions.md): **Instructions for preparing your research report.**
   - [Figures/](docs/Figures): Figures and images used in the workshop.
 
 - [code/](code)  
@@ -30,6 +31,10 @@ The workshop is based on a subset of the *Chlamydomonas reinhardtii* transcripto
   - [WGCNA_script2.R](code/WGCNA_script2.R): Additional WGCNA analysis script.
   - [data_example2_net_edges.txt](code/data_example2_net_edges.txt): Example network edges for exercises.
   - [data_example2_net_nodes.txt](code/data_example2_net_nodes.txt): Example network nodes for exercises.
+
+## Workshop Report Instructions
+
+Please refer to [docs/WGCNA_workshop_report_instructions.md](docs/WGCNA_workshop_report_instructions.md) for detailed guidelines on preparing your research report for this workshop.
 
 ## Getting Started
 
