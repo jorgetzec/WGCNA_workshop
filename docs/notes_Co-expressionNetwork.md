@@ -91,13 +91,13 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Module Merging**: Modules can be merged if their eigengenes are highly correlated (e.g., $>0.75$, **corresponding to $\text{mergeCutHeight}=0.25$**).
     
     Exemplification of module formation:
-    ![Formación y Fusión de Módulos](Figures/modules_dendro_merged.png)
+    <img src="Figures/modules_dendro_merged.png" width="70%" alt="Formation and Merger of Modules">
 
 ### Module Analysis and Trait Correlation
 
 After module detection, WGCNA allows for the **correlation of module eigengenes with external biological traits** (e.g., disease status, treatment) to identify biologically relevant modules. Modules highly correlated with a trait are likely involved in that trait's biology.
 
-![Correlación Módulo-Fenotipo](Figures/Trait-moduleCor.png)
+<img src="Figures/Trait-moduleCor.png" width="70%" alt="Module-Phenotype Relationship">
 
 Key concepts for assessing gene importance within modules and their relation to traits are:
 
