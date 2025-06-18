@@ -40,7 +40,7 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Output**: A symmetric $n \times n$ matrix $R = [r_{ij}]$, where $r_{ij} \in [-1, 1]$.
     
     Example of a correlation matrix (*R*):
-    <img src="Figures/matrixCor_heatmap.png" width="50%" alt="Matriz de Correlación">
+    <img src="Figures/matrixCor_heatmap.png" width="40%" alt="Matriz de Correlación">
 
 3. **Adjacency Matrix ($A$)**
     
@@ -91,7 +91,8 @@ The WGCNA workflow transforms expression data into networks through a series of 
     - **Module Merging**: Modules can be merged if their eigengenes are highly correlated (e.g., $>0.75$, **corresponding to $\text{mergeCutHeight}=0.25$**).
     
     Exemplification of module formation:
-    <img src="Figures/modules_dendro_merged.png" width="70%" alt="Formation and Merger of Modules">
+
+    <img src="Figures/modules_dendro_merged.png" width="80%" alt="Formation and Merger of Modules">
 
 ### Module Analysis and Trait Correlation
 
