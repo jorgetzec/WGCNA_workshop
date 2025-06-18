@@ -25,25 +25,9 @@ The WGCNA workflow transforms expression data into networks through a series of 
         where $n$ is the number of genes, $m$ is the number of samples.
 
 
-        Example of a expression matriz before and after preprocessing: 
+        Simulation of expression matriz preprocessing:
 
-        **Raw counts**
-        | **Raw Count Matrix** | S1  | S2  | S3  | S4  | S5  |
-        | -------------------- | --- | --- | --- | --- | --- |
-        | Gene A               | 0   | 3   | 1   | 1   | 0   |
-        | Gene B               | 0   | 0   | 2   | 1   | 1   |
-        | Gene C               | 0   | 4   | 2   | 0   | 0   |
-        | Gene D               | 0   | 0   | 1   | 1   | 0   |
-        | Gene E               | 1   | 0   | 0   | 0   | 1   |
-
-        **Processed expression matrix**
-        | **Normalized Expression Matrix** | S1  | S2  | S3  | S4  | S5  |
-        | -------------------------------- | --- | --- | --- | --- | --- |
-        | Gene A                           | 4.7 | 5.3 | 6.3 | 5.2 | 5.1 |
-        | Gene B                           | 4.7 | 4.7 | 5.5 | 5.1 | 4.7 |
-        | Gene C                           | 4.5 | 4.9 | 4.7 | 5.0 | 4.9 |
-        | Gene D                           | 5.2 | 4.4 | 5.5 | 6.4 | 5.6 |
-
+        <img src="Figures/expression_preprocessing.png" width="70%" alt="Matriz de Correlación">
 
 2. **Correlation Matrix ($R$)**
     
