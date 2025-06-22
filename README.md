@@ -38,9 +38,9 @@ Please refer to [docs/WGCNA_workshop_report_instructions.md](docs/WGCNA_workshop
 
 ## Getting Started
 
-1. Clone this repository.
-2. Install the required R packages (see scripts for details).
-3. Follow the scripts in the `code/` directory and refer to the notes in `docs/` for guidance.
+1. Clone or download (zip and unzip) this repository.
+2. To use the scripts, first open the `workshop.Rproj` file located in the root folder. This will ensure the correct working directory is set.
+3. Follow the scripts in the `code/` directory and refer to the notes in `docs/` for guidance. The scripts include details on the necessary R packages to install.
 
 ## About the Example Dataset
 
